@@ -137,4 +137,14 @@ if(WIN32 AND LIBCLANG_DLL)
 	)
 endif()
 
+# On Linux: copy libclang.so next to the plugin (matches the Windows copy above)
+if(UNIX AND NOT APPLE)
+	add_custom_command(TARGET metaffi.idl.cpp POST_BUILD
+		COMMAND ${CMAKE_COMMAND} -E copy_if_different
+			"${LIBCLANG_LIB}"
+			"$ENV{METAFFI_HOME}/cpp/libclang.so"
+		COMMENT "[cpp_idl_plugin] Copying libclang.so to METAFFI_HOME/cpp/"
+	)
+endif()
+
 set(metaffi.idl.cpp metaffi.idl.cpp PARENT_SCOPE)

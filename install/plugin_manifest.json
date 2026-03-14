@@ -1,0 +1,23 @@
+{
+	"name": "cpp",
+	"version": "0.3.1",
+	"files": {
+		"windows": [
+			"xllr.cpp.dll",
+			"metaffi.api.cpp.dll",
+			"metaffi.compiler.cpp.dll",
+			"metaffi.idl.cpp.dll",
+			"libclang.dll",
+			"compiler/**"
+		],
+		"ubuntu": [
+			"xllr.cpp.so",
+			"metaffi.api.cpp.so",
+			"metaffi.compiler.cpp.so",
+			"metaffi.idl.cpp.so",
+			"libclang.so",
+			"compiler/**"
+		]
+	},
+	"extra_files": {}
+}

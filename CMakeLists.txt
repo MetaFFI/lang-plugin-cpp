@@ -13,6 +13,6 @@ add_subdirectory(compiler)
 add_subdirectory(test)
 
 add_custom_target(cpp)
-add_dependencies(cpp xllr.cpp metaffi.idl.cpp metaffi.compiler.cpp cpp_host_test cpp_e2e_compiler_test)
+add_dependencies(cpp xllr.cpp metaffi.idl.cpp metaffi.compiler.cpp cpp_host_test cpp_e2e_compiler_test xllr.cpp.compiler)
 
 set(cpp cpp PARENT_SCOPE)
