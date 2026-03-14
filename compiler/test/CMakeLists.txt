@@ -12,7 +12,7 @@ add_custom_command(
     OUTPUT ${gen_hpp} ${gen_cpp}
     COMMAND metaffi -c --idl "${idl_path}" -h cpp
     WORKING_DIRECTORY ${gen_dir}
-    DEPENDS ${idl_path} metaffi.compiler.cpp
+    DEPENDS ${idl_path} metaffi.compiler.cpp xllr metaffi
     COMMENT "cpp compiler test: generating C++ host stubs from xllr.test IDL"
 )
 
