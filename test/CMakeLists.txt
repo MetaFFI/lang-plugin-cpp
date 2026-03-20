@@ -23,13 +23,21 @@ set(cpp_host_test_includes
 c_cpp_exe(cpp_host_test
 	"${cpp_host_test_src}"
 	"${cpp_host_test_includes}"
-	"doctest::doctest;Boost::filesystem;metaffi.api.cpp"
+	"doctest::doctest;Boost::filesystem"
 	"$ENV{METAFFI_HOME}"
 )
+
+# Header-only API: force-include metaffi.h so all TUs get inline implementations
+if(MSVC)
+	target_compile_options(cpp_host_test PRIVATE "/FImetaffi/metaffi.h")
+else()
+	target_compile_options(cpp_host_test PRIVATE -include metaffi/metaffi.h)
+endif()
 
 target_compile_definitions(cpp_host_test PRIVATE
 	CPP_GUEST_LIB_NAME="${CMAKE_SHARED_LIBRARY_PREFIX}cpp_guest_module${CMAKE_SHARED_LIBRARY_SUFFIX}"
 	C_GUEST_LIB_NAME="${CMAKE_SHARED_LIBRARY_PREFIX}c_guest_module${CMAKE_SHARED_LIBRARY_SUFFIX}"
+	CPP_RUNTIME_NAME="cpp.${CPP_ABI_SUFFIX}"
 	DOCTEST_CONFIG_NO_WINDOWS_SEH
 )
 

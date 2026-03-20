@@ -13,6 +13,9 @@
 #ifndef C_GUEST_LIB_NAME
 #	define C_GUEST_LIB_NAME "c_guest_module.dll"
 #endif
+#ifndef CPP_RUNTIME_NAME
+#	define CPP_RUNTIME_NAME "cpp"
+#endif
 
 namespace
 {
@@ -72,7 +75,7 @@ std::string resolve_c_module_path()
 } // namespace
 
 CppTestEnv::CppTestEnv()
-	: runtime("cpp")
+	: runtime(CPP_RUNTIME_NAME)
 	, cpp_module(runtime.runtime_plugin(), resolve_cpp_module_path())
 	, c_module(runtime.runtime_plugin(), resolve_c_module_path())
 {

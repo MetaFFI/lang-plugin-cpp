@@ -4,19 +4,21 @@
 	"files": {
 		"windows": [
 			"xllr.cpp.dll",
-			"metaffi.api.cpp.dll",
+			"xllr.cpp.*.dll",
 			"metaffi.compiler.cpp.dll",
 			"metaffi.idl.cpp.dll",
 			"libclang.dll",
-			"compiler/**"
+			"compiler/**",
+			"api/**"
 		],
 		"ubuntu": [
 			"xllr.cpp.so",
-			"metaffi.api.cpp.so",
+			"xllr.cpp.*.so",
 			"metaffi.compiler.cpp.so",
 			"metaffi.idl.cpp.so",
 			"libclang.so",
-			"compiler/**"
+			"compiler/**",
+			"api/**"
 		]
 	},
 	"extra_files": {}

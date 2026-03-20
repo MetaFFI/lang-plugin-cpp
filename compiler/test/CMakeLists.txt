@@ -37,9 +37,16 @@ set(cpp_e2e_compiler_test_includes
 c_cpp_exe(cpp_e2e_compiler_test
     "${cpp_e2e_compiler_test_src}"
     "${cpp_e2e_compiler_test_includes}"
-    "doctest::doctest;metaffi.api.cpp"
+    "doctest::doctest"
     "$ENV{METAFFI_HOME}"
 )
+
+# Header-only API: force-include metaffi.h so all TUs (including generated code) get inline implementations
+if(MSVC)
+    target_compile_options(cpp_e2e_compiler_test PRIVATE "/FImetaffi/metaffi.h")
+else()
+    target_compile_options(cpp_e2e_compiler_test PRIVATE -include metaffi/metaffi.h)
+endif()
 
 target_compile_definitions(cpp_e2e_compiler_test PRIVATE DOCTEST_CONFIG_NO_WINDOWS_SEH)
 add_dependencies(cpp_e2e_compiler_test cpp_compiler_generate_host xllr.test metaffi.compiler.cpp)
